@@ -2,16 +2,16 @@ const express = require('express');
 const app = express();
 const { poolPromise } = require('./db'); // Make sure this is correctly implemented
 const session = require('express-session');
-const cors = require('cors');
+// const cors = require('cors');
 // Use a persistent store in production, e.g., connect-mongo, connect-redis
 
 
 // CORS middleware configuration
-app.use(cors({
-    origin: 'https://logincorscheck.netlify.app',
-    // origin: 'http://127.0.0.1:5500',
-    credentials: true // Allow credentials such as cookies
-}));
+// app.use(cors({
+//     origin: 'https://logincorscheck.netlify.app',
+//     // origin: 'http://127.0.0.1:5500',
+//     credentials: true // Allow credentials such as cookies
+// }));
 
 app.use(express.json())
 // Session middleware
@@ -22,7 +22,7 @@ app.use(session({
     cookie: {
         sameSite: "none",
         maxAge: 30000, // 30 seconds
-        secure: false, // Set to true if using HTTPS
+        secure: true, // Set to true if using HTTPS
     },
 }));
 
